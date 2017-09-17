@@ -1,0 +1,18 @@
+<figure>
+  <img [src]="post.img" alt="image post">
+</figure>
+<div class='article'>
+    <h3>{{ post.title | capitalize }}</h3>
+    <div class='article-info' [innerHTML]="post.content | sinimagen| slice:0:200 | domseguro" ></div>
+</div>
+
+<a *ngIf="!editing" [routerLink]="['/article',post.id]"  class="btn btn-link">Ver mas...</a>
+
+<div *ngIf="editing" class='buttons'>
+    <button type='button' [routerLink]="['/article',post.id]" class='btn btn-default' aria-label='Left Align' title="Ver Artículo"><i class="fa fa-eye" aria-hidden="true"></i></button>
+    <button type='button' (click)="edit(post.id)" class='btn btn-default' aria-label='Left Align' title="Editar Artículo"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+    <button type='button' (click)="remove(post.id)" class='btn btn-danger' aria-label='Left Align' title="Eliminar Artículo"><i class="fa fa-times" aria-hidden="true"></i></button>
+</div>
+
+
+

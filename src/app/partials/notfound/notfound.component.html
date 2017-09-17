@@ -1,0 +1,20 @@
+<div *ngIf="islist; then tmpllist else tmpl404"></div>
+<ng-template #tmpl404>
+  <div class="container">
+    <div>
+        <i class="fa fa-frown-o" aria-hidden="true"></i>
+        <h3>Upps! Pagina no encontrada</h3>
+    </div>
+    <p>volver al <span routerLink="/home">inicio</span></p>
+  </div>
+</ng-template>
+
+<ng-template #tmpllist>
+  <div class="container">
+    <div>
+        <i class="fa fa-frown-o" aria-hidden="true"></i>
+        <h3>Upss! No hay entradas</h3>
+    </div>
+    <p>volver al <span routerLink="/home">inicio</span></p>
+  </div>
+</ng-template>

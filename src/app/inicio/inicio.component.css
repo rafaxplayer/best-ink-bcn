@@ -1,0 +1,331 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.container .portal{
+    margin-bottom:5em;
+}
+
+.container .portal img{
+    width: 100%;
+}
+
+.container section{
+    display: flex;
+    margin:50px 10em;
+    padding: 10px 40px;
+    border:solid 2px grey;
+    border-radius:10px;
+}
+
+.container section:not(#team):not(#contact){
+    box-shadow: 2px 2px 5px #999;
+}
+
+.container section .imgs-section{
+    position :relative;
+     
+}
+
+.container section .info-section h2{
+    margin: 5px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(21, 19, 17, 0.17);
+    word-wrap: break-word;
+}
+
+.container section .info-section h2:hover{
+    color:#986d09;
+    cursor:pointer;
+}
+
+.container section .info-section p{
+    padding-top:15px;
+    margin-top:0; 
+    font-size: 1.1em;
+    
+}
+
+.container section .imgs-section figure{
+    width: 150px;
+    height: 150px;
+    position:absolute;
+    border:solid 3px #986d09;
+    overflow: hidden;
+    cursor: pointer;
+    margin:0;
+
+}
+
+.container section .imgs-section figure img{
+    width: 100%;
+    height: 100%;
+    
+}
+
+.container section .right{
+    margin-left: 80px;
+}
+
+.container section .left{
+    margin-right: 100px;
+    transform: translate(-100px,0);
+}
+
+.container #team{
+    display: block;
+    border: none;
+    position: relative;
+    width: 100%;
+}
+
+.container #team .team-imgs-section{
+    
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.container #team .team-img{
+    position: relative;
+    width:200px;
+    height:200px;
+    min-width: 200px;
+    border:4px solid #986d09;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.container #team .team-img .img-info{
+    font-size: 1.2em;
+    font-weight: bold;
+    position: absolute;
+    color:white;
+    top:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    background: rgba(6, 6, 6, 0.51);
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    transition: all .4s ease;
+} 
+
+.container #team .team-img img{
+    width: 100%;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    transition: all .4s ease;
+}
+
+.container #team .team-img:hover img{
+    transform: scale(1.1);
+}
+
+.container #team .team-img:hover .img-info{
+    opacity: 1;
+}
+
+.container #team .team-img .img-info p{
+    text-align: center;
+ 
+}
+.container #team .team-img .img-info p:first-of-type{
+    margin-top: auto;
+}
+.container #team .team-img .img-info p:last-of-type{
+    margin-bottom: auto;
+}
+
+.container #contact{
+    border:none;
+   display:block;
+   width: inherit;
+   
+}
+.container #contact .contact-info{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    
+}
+.container #contact .contact-info>*{
+    padding: 10px;
+}
+
+.container #contact .contact-info .contact-address{
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+    font-size: 1.2em;
+    flex:1;
+}
+.container #contact .contact-info .contact-address span{
+    font-weight: bold;
+    margin: 10px 0 3px;
+}
+
+.container #contact .contact-info .contact-map agm-map{
+    width: 350px;
+    height:300px;
+   
+}
+
+.container #contact form{
+    font-family: sans-serif;
+    display:flex;
+    flex-direction: column;
+    align-items: baseline;
+    background: black;
+    min-width: 300px;
+    border-radius: 10px;
+    flex:1;
+}
+.container #contact form  input,
+.container #contact form  textarea{
+    margin:10px 5px;
+    width: 90%;
+    padding: 5px;
+    background: black;
+    color:white;
+    border: 1px solid white;
+}
+.container #contact form .error{
+    color:red;
+    margin-left: 5px;
+    font-size: .8em;
+    
+}
+.container #contact form button{
+    margin: 5px 0 0 5px;
+    background-color: #986d09;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    color: black;
+    
+}
+
+.pos1{
+    animation: showpost1 1s forwards;
+   /*  transform: translate(-30px,0) rotate(20deg); */
+}
+.pos2{
+    animation: showpost2 1s forwards;
+
+}
+.pos3{
+     animation: showpost3 1s forwards;
+     /* transform:translate(-50px,-50px) rotate(40deg); */
+} 
+@media (min-width: 768px){
+    .container {
+        width: auto !important; 
+    }
+}
+
+
+
+@media screen and (max-width:768px){
+    .container{
+        align-items: unset; 
+        margin-top: 0px;
+        
+    }
+
+    .container section{
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+               
+    }
+
+    .container .portal{
+        margin-bottom:1em;
+    }
+
+    .container  #piercing{
+       flex-direction: column-reverse;
+    }
+
+    .container section .imgs-section {
+        display:flex;
+         margin: 0;
+        transform: none;
+        width:auto;
+
+    }
+    .container section .imgs-section figure{
+        position:relative;
+        width: auto;
+        height: auto;
+        margin:5px;
+       
+    }
+    .container section .imgs-section figure img{
+        vertical-align:middle;
+    }
+    .pos1,.pos2,.pos3{
+        animation: none;
+    }
+    .container  #team{
+        width: auto;
+    }
+    .container #team .team-img{
+        margin-bottom: 10px;
+    }
+    .container #team .team-img .img-info{
+        opacity: 1;
+        background: rgba(244, 236, 236, 0.51);
+    }
+ 
+}
+@media screen and (max-width:998px){
+    .container #contact .contact-info{
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+ 
+    }
+}
+
+/* Standard syntax */ 
+@keyframes showpost1 {
+     0%{
+        transform:scale(0) translate(0) rotate(0deg)
+    }
+    100%{
+        
+        transform:scale(1) translate(-30px,0) rotate(20deg);
+    }
+}
+@keyframes showpost2 {
+     0%{
+        transform:scale(0) translate(0) rotate(0deg)
+    }
+    100%{
+        
+        transform:scale(1) translate(30px,-20px) rotate(60deg);
+    }
+}
+@keyframes showpost3 {
+     0%{
+        transform:scale(0) translate(0) rotate(0deg)
+    }
+    100%{
+        
+        transform:scale(1) translate(-50px,-50px) rotate(40deg);
+    }
+}
+
+
+

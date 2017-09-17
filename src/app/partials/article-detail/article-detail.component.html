@@ -1,0 +1,10 @@
+<div class="container come-in">
+    <figure>
+      <img [src]="post.img" alt="">
+    </figure>
+    <h2>{{post.title}}</h2>
+    <div class="content" [innerHTML]="post.content | domseguro"></div>
+    <button routerLink="/blog" class="btn btn-link"><-- Volver</button>
+
+<div>
+

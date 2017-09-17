@@ -1,0 +1,130 @@
+header{
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color:white;
+    border-bottom: 4px solid #986d09;
+    z-index:1000000;
+}
+header .button-menu{
+    color:#986d09;
+    display:none;
+    align-self: flex-start;
+    padding: 10px;
+    cursor: pointer;
+}
+header .button-menu:hover{
+    color:white;
+}
+header figure{
+    width: 100%;
+    max-width: 500px;
+}
+header p{
+    margin-top:-25px;
+}
+header figure img{
+    width: 100%;
+}
+header nav > ul{
+    padding:0;
+    list-style: none;
+    display: flex;
+    
+}
+header nav >ul li> *{
+    transition: all .6s ease-out;
+}
+header nav ul li a{
+    padding: 4px 15px;
+    cursor: pointer;
+    font-size: 1.5em;
+    position: relative;
+    text-decoration: none;
+    color: white;
+    
+}
+header nav ul > li a:hover,
+header nav ul > li a.active{
+    color:#986d09;
+    
+}
+
+header nav ul >li a:hover:before,
+header nav ul >li a:hover:after{
+    content: '~';
+    position:absolute;
+    font-size: 1.5em;
+
+}
+header nav ul>li a:hover:before{
+    top:-5px;
+    left: 4px;
+}
+header nav ul>li a:hover:after{
+    top:-5px;
+    right: 4px;
+     
+}
+header .admin{
+    position: relative;
+}
+header .admin > ul{
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    min-width:140px;
+    bottom: -100px;
+    left:10px;
+    transition:all .4s ease;
+    
+}
+
+header .admin > ul li{
+    cursor:pointer;
+    font-size: 1.2em;
+    background: #655B5B;
+    position: relative;
+    display: block;
+    padding: 5px 10px;
+    transition:all 0.8s ease !important;
+ }
+
+header .admin > ul li:hover{
+    background: #C8C0C0;
+}
+header .admin:hover > ul{
+    height:fit-content;
+}
+
+@media screen and (max-width:768px){
+    header nav{
+        align-self: flex-start;
+        display:none;
+    }
+    header .button-menu{
+        display: inline-block;
+    }
+    header nav > ul{
+        flex-direction: column;
+    }
+    header nav > ul li{
+        padding: 15px;
+    }
+    header nav > ulli:hover:before,
+    header nav > ulli:hover:after{
+        content: ''
+    }
+    header nav > ul li:hover{
+        background: #C8C0C0;
+    }
+    header .admin> ul{
+        bottom: -180px;
+    }
+    header .admin> ul li {
+        padding:20px;
+    }
+}

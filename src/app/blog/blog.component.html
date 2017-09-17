@@ -1,0 +1,31 @@
+<div class="container">
+    <app-search (search)="onSearchArticle($event)"></app-search>
+    <div class="post-container">
+        <app-article-list 
+            *ngFor="let post of pagedItems;let i = index" 
+            class="post come-in" 
+            [post]="post" 
+            [editing]="false" >
+        </app-article-list>
+    </div>
+
+  <not-found *ngIf="!pagedItems.length" [islist]="true"></not-found>
+
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(1)">First</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+      </li>
+      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a (click)="setPage(page)">{{page}}</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.currentPage + 1)">Next</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.totalPages)">Last</a>
+      </li>
+  </ul>
+<div>
