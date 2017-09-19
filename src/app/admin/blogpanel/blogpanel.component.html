@@ -3,7 +3,7 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     {{message}}
   </div>
-  <form method="post" id="formNew" #formNew="ngForm" novalidate enctype="multipart/form-data" (ngSubmit)="onSubmit(formNew)" autocomplete="off">
+  <form method="post" id="formNew" #formNew="ngForm" novalidate enctype="multipart/form-data" (ngSubmit)="onSubmit(formNew,$event)" autocomplete="off">
     <div class="form-group">
         <figure>
             <figcaption>Imagen para el articulo</figcaption>
@@ -15,7 +15,7 @@
         <input type="file" name="imagen" id="imagen" class="form-control" accept=".jpg, .bmp, .png, .jpeg" (change)="changeImage($event)" #imageArticle #imagen="ngModel" ngModel/>
     </div>
     <div class="form-group" [ngClass]="{'has-error':titulo.errors && (titulo.touched || titulo.dirty)}">
-        <label for="title">Titulo del articulo</label>
+        <label for="titulo">Titulo del articulo</label>
         <input  name="titulo"  id="titulo" type="text" class="form-control" minlength="4" maxlength="30" required #titleArticle #titulo="ngModel" ngModel />
     </div> 
     <div *ngIf="titulo.errors && (titulo.touched || titulo.dirty)" class="has-error">

@@ -84,13 +84,13 @@ export class BlogpanelComponent implements OnInit {
     }
   }
 
-  onSubmit(f: NgForm) {
-
+  onSubmit(f: NgForm,e) {
+    e.preventDefault();
     if (f.valid) {
       console.log('valid')
       if (this.modeEdit) {
         let currentId = this.id;
-        this._bestservice.updateArticle(this.id, this.getFormData(f))
+        this._bestservice.updateArticle(this.getFormData(f))
           .then(data => {
             this.message = data._body,
               setTimeout(() => {
