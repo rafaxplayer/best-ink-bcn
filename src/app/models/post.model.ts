@@ -1,8 +1,9 @@
-export class Post{
-   
-        public id:number;
-        public title:String;
-        public img:String;
-        public content:String;
-    
+export class Post {
+        public key?: string;
+        public title: String;
+        public img_url: String;
+        public img_name:string;
+        public content: String;
+        public date:Date;
+
 }

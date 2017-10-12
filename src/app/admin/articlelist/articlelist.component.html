@@ -1,0 +1,36 @@
+<div class="container">
+    <app-search (search)="onSearchArticle($event)"></app-search>
+    <div *ngIf="message.length > 0" class="alert alert-info alert-dismissible come-in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{message}}
+    </div>
+    <div class="post-container">
+        <app-article-list 
+            *ngFor="let post of pagedItems" 
+            class="post come-in" 
+            [post]="post" 
+            [editing]="true" 
+            (pushmessage)="onMessage($event)">
+        </app-article-list>
+    </div>
+
+    <not-found *ngIf="!pagedItems.length" [islist]="true"></not-found>
+
+    <ul *ngIf="pager.pages && pager.pages.length && postsCount > 10" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(1)">First</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.currentPage + 1)">Next</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.totalPages)">Last</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,64 @@
+<div class="container">
+  <div *ngIf="message.length > 0" id="alert" class="alert alert-info alert-dismissible come-in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>    {{message}}
+  </div>
+  <div class="gallery row">
+    <div class="col-md-4">
+      <h2>Administardor de Galerias: {{ selectedTypeStr | capitalize }}</h2>
+      <p></p>
+      <figure>
+        <img [src]="preview" alt="imagen seleccionada">
+      </figure>
+      <progress [value]="progress"></progress>
+      <form #formImage>
+        <div class="form-group">
+          <label for="type-img">Galeria:</label>
+
+          <select name="type_img" id="" class="form-control" #type (change)="onChangeType($event)">
+                  <option value="1">Tattoo</option>
+                  <option value="2">Piercing</option>
+                  <option value="3">MicroPigmentación</option>
+              </select>
+        </div>
+        <div class="form-group">
+          <input type="file" class="form-control" #image accept=".jpg, .bmp, .png, .jpeg" (change)="onChangeImg($event)" />
+        </div>
+        <div class="form-group">
+          <button [disabled]="!imageFiles.length" class="btn btn-outline-primary" (click)="uploadImage($event)">Subir imagen</button>
+          <button [disabled]="!imageFiles.length" class="btn btn-outline-danger" (click)="resetForm($event)">Limpiar imagen</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-8">
+      <div class="card-columns">
+          <div *ngFor="let img of images" class="card">
+            <img class="img card-img-top"style="width:100%;" [src]="img.url" [alt]="img.name" data-toggle="modal" data-target="#modalImage" (click)="imageSelect(img)">
+              <div class="card-body">
+              {{img.name}}
+              </div>
+              <div class="card-footer">
+                  <button type="button" class="btn btn-danger btn-sm" (click)="deleteIMG($event,img)">Eliminar</button>
+              </div>
+            </div>
+      </div>
+    </div> 
+  </div>
+  <!--Modal-->
+  <div class="modal fade" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="modalImageLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">{{selectedImage.name}}</h4>
+            <i class="fa fa-remove fa-2x" data-dismiss="modal"></i>
+          </div>
+          <div class="modal-body">
+              <img class="img-responsive" [src]="selectedImage.url" [alt]="selectedImage.name" #thumb width="400px">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div> 
+</div>

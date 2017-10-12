@@ -1,23 +1,8 @@
 .container{
     min-height: 500px;
-    margin: 50px 60px;
     font-family: sans-serif;
 }
-figure{
+.card{
+    max-width: 40rem;
     margin: 0 auto;
-    max-width: 600px;
-    max-height: 300px;
-    overflow: hidden;
-    z-index: 99999;
-}
-img{
-    z-index: 0;
-    width: 100%
-}
-@media screen and (max-width:768px){
-    .container{
-        
-        margin: 40px 20px;
-        
-    }
 }

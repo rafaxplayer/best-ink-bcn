@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core'
 import { HelpersService } from './services/helpers.service'
-import { ScrollToService } from 'ng2-scroll-to-el';
-import { AuthService } from './services/auth.service'
+
+
 
 @Component({
   selector: 'app-root',
@@ -13,16 +13,12 @@ import { AuthService } from './services/auth.service'
 
 export class AppComponent implements OnInit{
   
-    constructor(private help:HelpersService,
-                private scrollService: ScrollToService,
-                public auth:AuthService){}
+    constructor(private help:HelpersService){}
 
-    ngOnInit(){
-        this.auth.handleAuthentication();
-    }
+    ngOnInit(){}
 
     gotoTop(){
-        this.scrollService.scrollTo('header');
+        this.help.scrollTo('header')
     }
 
     

@@ -3,7 +3,7 @@ import {Pipe ,PipeTransform}from '@angular/core'
 @Pipe({
     name:'sinimagen'
 })
-export class SinImagen implements PipeTransform{
+export class SinImagenPipe implements PipeTransform{
 
     transform(value:string):string{
 

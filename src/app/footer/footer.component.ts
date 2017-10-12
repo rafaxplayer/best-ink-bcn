@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HelpersService } from '../services/helpers.service'
 import { Router } from '@angular/router';
-import { ScrollToService } from 'ng2-scroll-to-el';
+
 declare var $:any;
 
 @Component({
@@ -12,8 +12,7 @@ declare var $:any;
 export class FooterComponent {
 
   constructor(public help:HelpersService,
-              private router:Router,
-              private scrollService:ScrollToService,) { }
+              private router:Router) { }
 
   selectNavigate = (id:string):void =>{
     
@@ -26,7 +25,7 @@ export class FooterComponent {
               this.help.toggleMenu();
             }  
     
-            this.scrollService.scrollTo(id,800,offset);
+            this.help.scrollTo(id)
     
           }else{
     

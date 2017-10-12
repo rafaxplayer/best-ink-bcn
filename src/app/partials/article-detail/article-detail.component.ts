@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-import { BestService } from '../../services/best.service'
+import { BestService } from './../../services/best.service';
 import { Post } from '../../models/post.model'
+
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
@@ -9,18 +10,18 @@ import { Post } from '../../models/post.model'
 })
 export class ArticleDetailComponent implements OnInit {
 
-  post:Post = new Post();;
-  
+  post: Post = new Post();;
+
   constructor(
-    private _route:ActivatedRoute,
-    private _bestService:BestService
-  ){}
-  
+    private _bestService: BestService,
+    private _route: ActivatedRoute
+  ) {}
+
   ngOnInit() {
     this._route.params.subscribe(params => {
-      this._bestService.getPost(params.id).then( post => this.post = post )
+      this._bestService.getArticle(params.id).subscribe(post => { this.post = post })
     });
-    
+
   }
 
 }

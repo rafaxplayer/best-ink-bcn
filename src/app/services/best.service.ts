@@ -1,90 +1,65 @@
 import { Injectable } from '@angular/core'
-import { Headers, Http } from '@angular/http'
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { FirebaseApp } from 'angularfire2';
+import * as firebase from 'firebase';
 import { Post } from '../models/post.model'
-import 'rxjs/add/operator/toPromise'
+import { Imagen } from '../models/Imagen.model'
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class BestService {
 
-    private urlPagerPosts: string = 'http://localhost/best-ink-bcn/src/api/getPagerArticles.php';
-    private urlPostsCount: string = 'http://localhost/best-ink-bcn/src/api/getArticlesCount.php';
-    private urlPosts: string = 'http://localhost/best-ink-bcn/src/api/getArticles.php';
-    private urlPost: string = 'http://localhost/best-ink-bcn/src/api/getArticle.php?id=';
-    private urlNew: string = "http://localhost/best-ink-bcn/src/api/newArticle.php";
-    private urlMail: string = "http://localhost/best-ink-bcn/src/api/mail.php";
-    private urlEdit: string = "http://localhost/best-ink-bcn/src/api/updateArticle.php";
-    private urlDelete: string = 'http://localhost/best-ink-bcn/src/api/remove.php?id=';
-    private urlFindPosts: string = 'http://localhost/best-ink-bcn/src/api/findArticles.php?pattern=';
+    public storageRef: any;
+    public databaseRef: Observable<any>;
 
-
-    constructor(private http: Http) { }
-
-    getAllPost(): Promise<Post[]> {
-
-        return this.http.get(this.urlPosts)
-            .toPromise()
-            .then(response => response.json() as Post[])
-            .catch(this.handleError)
+    constructor(
+        public db: AngularFireDatabase,
+        public fireapp: FirebaseApp) {
+        this.storageRef = firebase.storage().ref('/gallery');
+        this.databaseRef = this.db.list('/posts');
     }
 
-    getArticlesCount(): Promise<number> {
+    getdatabaseRef = (): Observable<any> => {
+        return this.databaseRef;
+    }
+    getstoregeRef = () => {
+        return this.storageRef;
+    }
+    getArticles = (): Observable<any> => {
 
-        return this.http.get(this.urlPostsCount)
-            .toPromise()
-            .then(response => response.json() as number)
-            .catch(this.handleError)
+        return this.db.list('/posts', {
+            query: {
+                orderByChild: 'date'
+            }
+        });
+
     }
 
-    getPagerPost(start: number, end: number): Promise<Post[]> {
+    getArticle = (key: string): Observable<Post> => {
 
-        return this.http.get(this.urlPagerPosts, { params: { start: start, end: end } })
-            .toPromise()
-            .then(response => response.json() as Post[])
-            .catch(this.handleError)
+        return this.db.object('/posts/' + key)
+
     }
 
-    getPost(id: number): Promise<Post> {
-        return this.http.get(this.urlPost + id)
-            .toPromise()
-            .then(response => response.json() as Post)
-            .catch(this.handleError)
+    removeArticle = (key: string): firebase.Promise<any> => {
+
+        return this.db.list('/posts/' + key).remove()
+
     }
 
-    newArticle(formData: any): Promise<any> {
-
-        return this.http.post('http://localhost/best-ink-bcn/src/api2/article', formData)
-            .toPromise()
-            .catch(this.handleError)
+    getGalleryImages = (type:string): Observable<Imagen[]>=>{
+        return this.db.list(`/gallery/${type}`);
+    }
+    addDataImage =(path:string,image:Imagen)=>{
+        return this.db.list(`/gallery/${path}`).push(image)
+    }
+    removeDataImage=(path:string,key:string):firebase.Promise<any>=>{
+        return this.db.list(`/gallery/${path}`).remove(key);
     }
 
-    updateArticle(formData: any): Promise<any> {
-        return this.http.post(this.urlEdit, formData)
-            .toPromise()
-            .catch(this.handleError)
+    deleteGalleryImage =(path:string,name:string):firebase.Promise<any>=>{
+        return this.storageRef.child(`${path}/${name}`).delete()
     }
 
-    findArticles(pattern): Promise<Post[]> {
 
-        return this.http.get(this.urlFindPosts + pattern)
-            .toPromise()
-            .then(response => response.json() as Post[])
-            .catch(this.handleError)
-    }
-
-    deleteArticle(id: number): Promise<any> {
-
-        return this.http.get(this.urlDelete + id)
-            .toPromise()
-            .catch(this.handleError)
-    }
-     mail(formData: any):Promise<any>{
-        return this.http.post(this.urlMail, formData)
-        .toPromise()
-        .catch(this.handleError)
-     }
-
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
-    }
 }

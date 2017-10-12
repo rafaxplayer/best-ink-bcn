@@ -1,0 +1,19 @@
+.gallery figure{
+    max-width: 200px;
+    max-height: 200px;
+    overflow: hidden;
+}
+.gallery figure img{
+    width: 100%;
+}
+.card-footer{
+    text-align: right;
+}
+
+.modal-header i{
+    cursor: pointer;
+    color:dimgrey;
+    font-size: 1em;
+    padding: 5px;
+    
+}

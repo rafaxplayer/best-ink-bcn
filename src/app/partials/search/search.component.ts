@@ -14,8 +14,8 @@ export class SearchComponent {
 
   searchArticle(pattern) {
 
-    this._bestService.findArticles(pattern)
-      .then(posts => this.search.emit(posts), err => console.log(err));
+    // this._bestService.findArticles(pattern)
+    //   .then(posts => this.search.emit(posts), err => console.log(err));
 
   }
 

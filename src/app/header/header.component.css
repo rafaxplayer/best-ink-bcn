@@ -28,6 +28,10 @@ header p{
 header figure img{
     width: 100%;
 }
+header nav {
+    z-index: 1000000;
+}
+    
 header nav > ul{
     padding:0;
     list-style: none;

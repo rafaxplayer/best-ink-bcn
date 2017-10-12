@@ -12,48 +12,36 @@
         amet, consectetur adipisicing elit. Ipsum odit, autem assumenda in at, minus alias dolorum itaque, ea eaque molestiae
         distinctio cumque explicabo fuga pariatur cupiditate necessitatibus nam inventore!</p>
     </div>
-    <div class="imgs-section right" data-darkbox="assets/img/tattoo1.jpg" data-darkbox-group="tattoo" data-darkbox-description="<b>Tattoos Gallery</b><br>Por Juan Carlos Rodriguez">
-      <figure class="pos1">
-        <img src="assets/img/tattoo1.jpg" alt="">
-
+    <div class="imgs-section right" [attr.data-darkbox]="imagesTattoo && imagesTattoo[0] ? imagesTattoo[0].url : ''" data-darkbox-group="tattoo" data-darkbox-description="<b>Tattoos Gallery</b><br>Por Juan Carlos Rodriguez">
+      <figure *ngIf="imagesTattoo && imagesTattoo[0]" class="pos1">
+        <img [src]="imagesTattoo[0].url" alt="">
       </figure>
-      <figure class="pos2">
-        <img src="assets/img/tattoo2.jpg" alt="">
-
+      <figure *ngIf="imagesTattoo && imagesTattoo[1]" class="pos2">
+        <img [src]="imagesTattoo[1].url" alt="">
       </figure>
-      <figure class="pos3">
-        <img src="assets/img/tattoo3.jpg" alt="">
+      <figure *ngIf="imagesTattoo && imagesTattoo[2]" class="pos3">
+        <img [src]="imagesTattoo[2].url" alt="">
       </figure>
-      <span data-darkbox-group="tattoo" data-darkbox="assets/img/tattoo1.jpg"></span>
-      <span data-darkbox-group="tattoo" data-darkbox="assets/img/tattoo2.jpg"></span>
-      <span data-darkbox-group="tattoo" data-darkbox="assets/img/tattoo3.jpg"></span>
-      <span data-darkbox-group="tattoo" data-darkbox="assets/img/tattoo4.jpg"></span>
-      <span data-darkbox-group="tattoo" data-darkbox="assets/img/tattoo5.jpg"></span>
-      <span data-darkbox-group="tattoo" data-darkbox="assets/img/tattoo6.jpg"></span>
-      <span data-darkbox-group="tattoo" data-darkbox="assets/img/tattoo7.jpg"></span>
-      <span data-darkbox-group="tattoo" data-darkbox="assets/img/tattoo8.jpg"></span>
+      <span *ngFor="let tatImage of imagesTattoo;let i = index" 
+            data-darkbox-group="tattoo" [attr.data-darkbox]="tatImage.url"></span>
+      
     </div>
   </section>
   <div class="divider"><img src="assets/img/divider.png" alt=""></div>
   <section id="piercing">
-    <div class="imgs-section left" data-darkbox="assets/img/piercing1.jpg" data-darkbox-group="piercing" data-darkbox-description="<b>Piercing</b><br>Por Marta Slow">
-      <figure class="pos1">
-        <img src="assets/img/piercing1.jpg" alt="">
+    <div class="imgs-section left" [attr.data-darkbox]="imagesPiercing && imagesPiercing[0] ? imagesPiercing[0].url : ''" data-darkbox-group="piercing" data-darkbox-description="<b>Piercing</b><br>Por Marta Slow">
+      <figure *ngIf="imagesPiercing && imagesPiercing[0]" class="pos1">
+        <img [src]="imagesPiercing[0].url" alt="">
       </figure>
-      <figure class="pos2">
-        <img src="assets/img/piercing2.jpg" alt="">
+      <figure *ngIf="imagesPiercing && imagesPiercing[1]" class="pos2">
+        <img [src]="imagesPiercing[1].url" alt="">
       </figure>
-      <figure class="pos3">
-        <img src="assets/img/piercing3.jpg" alt="">
+      <figure *ngIf="imagesPiercing && imagesPiercing[2]" class="pos3">
+        <img [src]="imagesPiercing[2].url" alt="">
       </figure>
-      <span data-darkbox-group="piercing" data-darkbox="assets/img/piercing1.jpg"></span>
-      <span data-darkbox-group="piercing" data-darkbox="assets/img/piercing2.jpg"></span>
-      <span data-darkbox-group="piercing" data-darkbox="assets/img/piercing3.jpg"></span>
-      <span data-darkbox-group="piercing" data-darkbox="assets/img/piercing4.jpg"></span>
-      <span data-darkbox-group="piercing" data-darkbox="assets/img/piercing5.jpg"></span>
-      <span data-darkbox-group="piercing" data-darkbox="assets/img/piercing6.jpg"></span>
-      <span data-darkbox-group="piercing" data-darkbox="assets/img/piercing7.jpg"></span>
-      <span data-darkbox-group="piercing" data-darkbox="assets/img/piercing8.jpg"></span>
+      <span *ngFor="let piImage of imagesPiercing;let i = index"  
+              data-darkbox-group="piercing" [attr.data-darkbox]="piImage.url"></span>
+      
     </div>
     <div class="info-section">
       <h2 data-darkbox="assets/img/piercing1.jpg" data-darkbox-group="piercing" data-darkbox-description="<b>Piercing</b><br>Por Marta Slow">Piercing</h2>
@@ -76,19 +64,18 @@
         amet, consectetur adipisicing elit. Ipsum odit, autem assumenda in at, minus alias dolorum itaque, ea eaque molestiae
         distinctio cumque explicabo fuga pariatur cupiditate necessitatibus nam inventore!</p>
     </div>
-    <div class="imgs-section right" data-darkbox="assets/img/micro1.jpg" data-darkbox-group="micro" data-darkbox-description="<b>Micro Pigmentación</b>Por ....">
-      <figure class="pos1">
-        <img src="assets/img/micro1.jpg" alt="">
+    <div class="imgs-section right" [attr.data-darkbox]="imagesMicro && imagesMicro[0] ? imagesMicro[0].url:''" data-darkbox-group="micro" data-darkbox-description="<b>Micro Pigmentación</b>Por ....">
+      <figure *ngIf="imagesMicro && imagesMicro[0]" class="pos1">
+        <img [src]="imagesMicro[0].url" alt="">
       </figure>
-      <figure class="pos2">
-        <img src="assets/img/micro2.jpg" alt="">
+      <figure *ngIf="imagesMicro && imagesMicro[1]" class="pos2">
+        <img [src]="imagesMicro[1].url" alt="">
       </figure>
-      <figure class="pos3">
-        <img src="assets/img/micro3.jpg" alt="">
+      <figure *ngIf="imagesMicro && imagesMicro[2]"  class="pos3">
+        <img [src]="imagesMicro[2].url" alt="">
       </figure>
-      <span data-darkbox-group="micro" data-darkbox="assets/img/micro1.jpg"></span>
-      <span data-darkbox-group="micro" data-darkbox="assets/img/micro2.jpg"></span>
-      <span data-darkbox-group="micro" data-darkbox="assets/img/micro3.jpg"></span>
+      <span *ngFor="let micImage of imagesMicro;let i = index" data-darkbox-group="micro" [attr.data-darkbox]="micImage.url"></span>
+      
     </div>
   </section>
   <div class="divider"><img src="assets/img/divider.png" alt=""></div>
@@ -180,5 +167,4 @@
     </div>
   </section>
 
-  {{ message }}
 </div>

@@ -21,14 +21,15 @@
       "styles": [
         "styles.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
-        "./assets/bootstrap-3.3.7-dist/css/bootstrap.css",
+        "./assets/bootstrap/css/bootstrap.css",
         "./assets/css/darkbox.css",
         "../node_modules/froala-editor/css/froala_editor.pkgd.min.css",
         "../node_modules/froala-editor/css/froala_style.min.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
-        "./assets/bootstrap-3.3.7-dist/js/bootstrap.min.js",
+        "../node_modules/popper.js/dist/umd/popper.js",
+        "./assets/bootstrap/js/bootstrap.min.js",
         "./assets/js/darkbox.js",
         "../node_modules/froala-editor/js/froala_editor.pkgd.min.js",
         "./assets/js/smtp.js",

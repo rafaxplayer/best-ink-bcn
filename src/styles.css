@@ -1,11 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@import './assets/css/normalize.css';
+
 
 body{
     width:100%;
     background-color: #d2d6d5;
     box-sizing: border-box;
     font-family: 'Macondo'!important;
+}
+button{
+    cursor: pointer;
 }
 /* Animations for elemnets*/
 .come-in {

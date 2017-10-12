@@ -20,13 +20,13 @@ export class BlogComponent implements OnInit {
 
   pagedItems: Post[] = [];
 
-  constructor(private bestservice: BestService, private pagerService: PagerService) {}
+  constructor(public _bestService:BestService,private pagerService: PagerService) {}
 
   ngOnInit() {
-    this.bestservice.getArticlesCount().then( count => {
-      this.postsCount = count;
-      this.setPage(1);
-    })
+    this._bestService.getdatabaseRef().subscribe( posts => {
+      this.postsCount = posts.length;
+      this.setPage(1)
+  })
   }
 
   onSearchArticle(posts) {
@@ -37,13 +37,13 @@ export class BlogComponent implements OnInit {
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
-
     // get pager object from service
     this.pager = this.pagerService.getPager(this.postsCount, page);
-
     // get current page of items
-    this.bestservice.getPagerPost(this.pager.startIndex,this.pager.endIndex + 1)
-      .then( posts => this.pagedItems = posts)
+    this._bestService.getArticles().subscribe(posts=>{
+      this.pagedItems = posts.slice(this.pager.startIndex, this.pager.endIndex + 1)
+      
+  }) 
 
   }
 

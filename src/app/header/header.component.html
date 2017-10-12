@@ -12,16 +12,15 @@
         <li><a (click)="selectNavigate('#team')">Equipo</a></li>
         <li><a (click)="selectNavigate('#contact')">Contacto</a></li>
         <li><a routerLink="blog">Blog</a></li>
-        <li *ngIf="!auth.isAuthenticated()"> <a (click)="auth.login()" >Login</a></li>
-        <li class="admin"><a *ngIf="auth.isAuthenticated()">Admin</a>
-          <ul *ngIf="auth.isAuthenticated()">
+        <li *ngIf="!auth.isLoggedIn"><a routerLink="login">Login</a></li> 
+        <li class="admin"><a *ngIf="auth.isLoggedIn">Admin</a>
+          <ul>
             <li [routerLink]="['/admin','new']" >New Article</li>
             <li [routerLink]="['/admin','list']" >Admin Articles</li>
-            <li (click)="auth.logout()" >LogOut</li>
+            <li [routerLink]="['/admin','gallery']">Admin Galleries</li>
+            <li (click)="auth.signOut()">LogOut</li>
           </ul>
         </li>
-        
-        
       </ul>
     </nav>
   </header>
